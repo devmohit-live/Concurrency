@@ -1,8 +1,8 @@
 # Print in Order
 
-### Example: 
+### Question 1 :
 1. Hello
-1. I 
+1. I
 1. Am
 1. Mohit
 
@@ -14,3 +14,23 @@
 **[Basic Version](https://github.com/devmohit-live/Concurrency/tree/Order.Basic)**
 
 **[Modularized Version]()**
+
+
+
+### Question 2 :
+
+Odd / Even Series
+n = 10
+1 2 3 4 5 6 7 8 9 10
+
+
+### Question 3 : 
+Odd Zero Even Zero
+n = 10
+1 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 9 0 10 0 
+
+
+
+### Question 4 : 
+Odd / Even / Fibonnaci
+1 2 0 
