@@ -35,4 +35,4 @@ n = 5 (times) (5 zeros, 5 odds, 5 evens)
 
 ### Question 4 : 
 Odd / Even / Fibonnaci
-1 2 0 
+1 2 1 3 4 2 5 6 3 7 8 5 9 10 8

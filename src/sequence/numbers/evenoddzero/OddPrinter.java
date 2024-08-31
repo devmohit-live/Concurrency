@@ -17,7 +17,7 @@ public class OddPrinter implements Runnable{
                 while(state.getTurn() != Turn.ODD){
                     state.wait();
                 }
-                System.out.println(state.getNumber());
+                System.out.print(state.getNumber()+" ");
                 curr++;
                 state.setTurn(Turn.EVEN);
                 state.setNumber(state.getNumber()+1);
