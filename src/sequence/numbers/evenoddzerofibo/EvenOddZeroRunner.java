@@ -1,4 +1,4 @@
-package sequence.numbers.evenoddzero;
+package sequence.numbers.evenoddzerofibo;
 
 public class EvenOddZeroRunner {
     final int start = 1;

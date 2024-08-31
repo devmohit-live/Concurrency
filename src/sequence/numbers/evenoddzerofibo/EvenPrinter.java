@@ -1,28 +1,27 @@
-package sequence.numbers.evenoddzero;
+package sequence.numbers.evenoddzerofibo;
 
 
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 
 @AllArgsConstructor
-public class FiboPrinter implements Runnable{
+public class EvenPrinter implements Runnable{
     int currFreq, maxFreq;
     NumberState state;
-    int a ,b;
+
     @SneakyThrows
     @Override
     public void run() {
         while(currFreq <= maxFreq){
             synchronized (state) {
-                while(state.getTurn() != Turn.FIBONACCI){
+                while(state.getTurn() != Turn.EVEN){
                     state.wait();
                 }
-                int c = a + b;
-                a = b;
-                b = c;
-                System.out.print(c+" ");
+                System.out.print(state.getNumber()+" ");
                 currFreq++;
-                state.setTurn(Turn.ODD);
+//                state.setTurn(Turn.ZERO);
+                state.setTurn(Turn.FIBONACCI);
+                state.setNumber(state.getNumber() + 1);
                 state.notifyAll();
             }
         }

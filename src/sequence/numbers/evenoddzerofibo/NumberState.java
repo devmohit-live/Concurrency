@@ -1,4 +1,4 @@
-package sequence.numbers.evenoddzero;
+package sequence.numbers.evenoddzerofibo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
