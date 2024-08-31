@@ -1,4 +1,4 @@
-package sequence.numbers;
+package sequence.numbers.evenodd;
 
 
 import lombok.AllArgsConstructor;

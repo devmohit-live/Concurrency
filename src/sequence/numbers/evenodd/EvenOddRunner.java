@@ -1,4 +1,4 @@
-package sequence.numbers;
+package sequence.numbers.evenodd;
 
 public class EvenOddRunner {
     final NumberState state = new NumberState(Turn.ODD);

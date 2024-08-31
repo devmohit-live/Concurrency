@@ -1,4 +1,4 @@
-package sequence.numbers;
+package sequence.numbers.evenoddzero;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,4 +9,5 @@ import lombok.Setter;
 @Setter
 public class NumberState {
     private Turn turn;
+    private int number;
 }

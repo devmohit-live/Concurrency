@@ -26,8 +26,10 @@ n = 10
 
 ### Question 3 : 
 Odd Zero Even Zero
-n = 10
-1 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 9 0 10 0 
+
+n = 5 (times) (5 zeros, 5 odds, 5 evens)
+
+0 1 2 0 3 4 0 5 6 0 7 8 0 9 10
 
 
 

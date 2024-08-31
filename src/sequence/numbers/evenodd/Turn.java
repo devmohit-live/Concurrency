@@ -1,4 +1,4 @@
-package sequence.numbers;
+package sequence.numbers.evenodd;
 
 public enum Turn {
     ODD,
