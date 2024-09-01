@@ -1,4 +1,5 @@
 import boundedblockingqueue.BBQRunner;
+import messageBrokers.SQS.SQSRunner;
 import sequence.numbers.evenoddzerofibo.EvenOddZeroRunner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -8,6 +9,7 @@ public class Main {
 //       new HelloRunner().run();
 //        new EvenOddRunner().run();
 //        new EvenOddZeroRunner().run();
-        new BBQRunner().run();
+//        new BBQRunner().run();
+        new SQSRunner().run();
     }
 }
