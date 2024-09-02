@@ -1,5 +1,7 @@
 import boundedblockingqueue.BBQRunner;
 import messageBrokers.SQS.SQSRunner;
+import messageBrokers.kafka.MessageBroker;
+import messageBrokers.kafka.MessageBrokerRunner;
 import sequence.numbers.evenoddzerofibo.EvenOddZeroRunner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -10,6 +12,7 @@ public class Main {
 //        new EvenOddRunner().run();
 //        new EvenOddZeroRunner().run();
 //        new BBQRunner().run();
-        new SQSRunner().run();
+//        new SQSRunner().run();
+        new MessageBrokerRunner().run();
     }
 }
