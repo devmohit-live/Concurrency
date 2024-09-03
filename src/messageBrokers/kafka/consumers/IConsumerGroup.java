@@ -8,5 +8,6 @@ import java.util.List;
 public interface IConsumerGroup {
     String getConsumerGroupID();
     void registerConsumer(IConsumer consumer);
-    public void publish(Message message);
+    void publish(Message message);
+    void resetOffset(int index);
 }

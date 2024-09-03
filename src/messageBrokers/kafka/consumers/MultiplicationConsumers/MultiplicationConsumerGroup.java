@@ -53,9 +53,18 @@ public class MultiplicationConsumerGroup implements IConsumerGroup {
             System.out.printf("GroupID %s, Topic %s \n", groupID, topic);
             return;
         }
-        synchronized (state.getMessageQ()){
+        synchronized (state){
             state.getMessageQ().add(message);
-            state.getMessageQ().notifyAll();
+            state.notifyAll();
         }
     }
+
+    @Override
+    public void resetOffset(int index) {
+        synchronized (state){
+            state.resetIndex(index);
+            state.notifyAll();
+        }
+    }
+
 }

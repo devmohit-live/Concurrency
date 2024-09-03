@@ -1,5 +1,6 @@
 package messageBrokers.kafka;
 
+import lombok.SneakyThrows;
 import messageBrokers.kafka.consumers.AddConsumers.AddConsumer;
 import messageBrokers.kafka.consumers.AddConsumers.AddConsumerGroup;
 import messageBrokers.kafka.consumers.ConsumerGroupState;
@@ -15,6 +16,7 @@ import messageBrokers.kafka.message.Message;
 import java.util.ArrayList;
 
 public class MessageBrokerRunner {
+    @SneakyThrows
     public void run(){
         MessageBroker broker = new MessageBroker();
         // topics
@@ -37,7 +39,7 @@ public class MessageBrokerRunner {
 
         multiply.registerConsumer(new MultiplicationConsumer());
         multiply.registerConsumer(new MultiplicationConsumer());
-        multiply.registerConsumer(new MultiplicationConsumer());
+//        multiply.registerConsumer(new MultiplicationConsumer());
 
 
         // Register Consumer Groups to topic
@@ -48,15 +50,19 @@ public class MessageBrokerRunner {
 
 
         // messages  : Topic 1
-//        broker.pushlishMessage("Topic1",new MathsOperation<MathsBinaryOperation>("Topic1",new MathsBinaryOperation(1,2)));
-//        broker.pushlishMessage("Topic1",new MathsOperation<MathsBinaryOperation>("Topic1",new MathsBinaryOperation(3,4)));
-//        broker.pushlishMessage("Topic1",new MathsOperation<MathsBinaryOperation>("Topic1",new MathsBinaryOperation(5,6)));
-//        broker.pushlishMessage("Topic1",new MathsOperation<MathsBinaryOperation>("Topic1",new MathsBinaryOperation(7,8)));
+        broker.pushlishMessage("Topic1",new MathsOperation<MathsBinaryOperation>("Topic1",new MathsBinaryOperation(1,2)));
+        broker.pushlishMessage("Topic1",new MathsOperation<MathsBinaryOperation>("Topic1",new MathsBinaryOperation(3,4)));
+        broker.pushlishMessage("Topic1",new MathsOperation<MathsBinaryOperation>("Topic1",new MathsBinaryOperation(5,6)));
+        broker.pushlishMessage("Topic1",new MathsOperation<MathsBinaryOperation>("Topic1",new MathsBinaryOperation(7,8)));
+        Thread.sleep(3000);
+
+        broker.resetOffsetOfAConsumerGroup(topic1.getTopicName(),add.getConsumerGroupID(),0);
+        broker.resetOffsetOfAConsumerGroup(topic1.getTopicName(),multiply.getConsumerGroupID(),1);
 
 
         // Messages: Topic 2 : should not be picked up as no groups
-        broker.pushlishMessage("Topic2",new MathsOperation<MathsBinaryOperation>("Topic2",new MathsBinaryOperation(8,9)));
-        broker.pushlishMessage("Topic2",new MathsOperation<MathsBinaryOperation>("Topic2",new MathsBinaryOperation(9,10)));
+//        broker.pushlishMessage("Topic2",new MathsOperation<MathsBinaryOperation>("Topic2",new MathsBinaryOperation(8,9)));
+//        broker.pushlishMessage("Topic2",new MathsOperation<MathsBinaryOperation>("Topic2",new MathsBinaryOperation(9,10)));
 
 
 //        // Wrong Topics

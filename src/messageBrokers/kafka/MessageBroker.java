@@ -33,4 +33,14 @@ public class MessageBroker {
         topic.publish(message);
     }
 
+
+    public void resetOffsetOfAConsumerGroup(String topicID, String consumerGroupID, int index){
+        Topic topic = getTopicByID(topicID);
+        IConsumerGroup group = topic.getConsumerGroups().stream().filter(consumerGroup->consumerGroup.getConsumerGroupID().equals(consumerGroupID)).findFirst().orElse(null);
+        if (group==null){
+            throw new RuntimeException("Consumer group does not exists");
+        }
+        group.resetOffset(index);
+    }
+
 }

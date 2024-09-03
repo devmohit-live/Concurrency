@@ -3,7 +3,6 @@ package messageBrokers.kafka.consumers;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import messageBrokers.kafka.message.Message;
-import messageBrokers.kafka.Topic;
 
 
 @AllArgsConstructor
@@ -15,11 +14,13 @@ public class ConsumerWorker implements Runnable {
     public void run() {
         while (true){
             final Message msg;
-            synchronized (state.getMessageQ()){
-                while(state.getMessageQ().isEmpty()){
-                    state.getMessageQ().wait();
+            synchronized (state){
+                while(state.getMessageQ().isEmpty() || state.getOffset() >= state.getMessageQ().size()){
+                    state.wait();
                 }
-                msg = state.getMessageQ().remove(0);
+//                msg = state.getMessageQ().remove(0);
+                msg = state.getMessageQ().get(state.getOffset());
+                state.incrementIndex();
             }
 
             consumer.consume(msg);
