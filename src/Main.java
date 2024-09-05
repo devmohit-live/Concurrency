@@ -15,6 +15,7 @@ public class Main {
 //        new BBQRunner().run();
 //        new SQSRunner().run();
 //        new MessageBrokerRunner().run();
-        new SingletonRunner().run();
+//        new SingletonRunner().run();
     }
+
 }
