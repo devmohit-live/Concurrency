@@ -3,6 +3,7 @@ import messageBrokers.SQS.SQSRunner;
 import messageBrokers.kafka.MessageBroker;
 import messageBrokers.kafka.MessageBrokerRunner;
 import sequence.numbers.evenoddzerofibo.EvenOddZeroRunner;
+import singleton.SingletonRunner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -13,6 +14,7 @@ public class Main {
 //        new EvenOddZeroRunner().run();
 //        new BBQRunner().run();
 //        new SQSRunner().run();
-        new MessageBrokerRunner().run();
+//        new MessageBrokerRunner().run();
+        new SingletonRunner().run();
     }
 }
