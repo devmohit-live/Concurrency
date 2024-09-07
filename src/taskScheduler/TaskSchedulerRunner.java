@@ -4,7 +4,7 @@ import java.util.PriorityQueue;
 
 public class TaskSchedulerRunner {
     public void run(){
-        SchedulerState state = new SchedulerState(new PriorityQueue<>((a,b)->Long.compare(a.getTime() , b.getTime())));
+        SchedulerState state = new SchedulerState(new PriorityQueue<>((a,b)->Long.compare(a.getFixedTime() , b.getFixedTime())));
         TaskScheduler ts = new TaskScheduler(state);
         Scheduler s1 = new Scheduler();
         Scheduler s2 = new Scheduler();

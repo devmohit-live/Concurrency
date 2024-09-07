@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 public class Task {
     Payload payload;
-    Long time;
+    Long fixedTime;
     TaskType taskType;
     Long recurringTimeInterval;
 

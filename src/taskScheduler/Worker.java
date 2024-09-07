@@ -22,7 +22,7 @@ public class Worker implements Runnable {
                         schedulerState.wait();
                     }
                     task = schedulerState.tasks.peek();
-                    Long remainingTime =  task.getTime() -  System.currentTimeMillis();
+                    Long remainingTime =  task.getFixedTime() -  System.currentTimeMillis();
                     if(remainingTime > 0) {
                         // wait for remaining time
                         schedulerState.wait(remainingTime);
@@ -31,16 +31,20 @@ public class Worker implements Runnable {
                     }
                 }
                 schedulerState.tasks.poll(); // polling should be a part of sync
-                if(task.getTaskType() == TaskType.RECURRING){ // can be changed to task type check
+                if(task.getTaskType() == TaskType.RECURRING){
                     schedulerState.tasks.add(
                             new Task(
                                 task.getPayload(),
-                                System.currentTimeMillis() + task.getRecurringTimeInterval(),
-//                                task.getTime() + task.getRecurringTimeInterval(),
+// If req is: run it after every interval after the last run:
+//                                System.currentTimeMillis() + task.getRecurringTimeInterval(),
+// If req is: run it every 10 sec
+                                // To avoid jitter we schedule it after the
+                                task.getFixedTime() + task.getRecurringTimeInterval(), // this will be new fixed time
                                 task.getTaskType(),
                                 task.getRecurringTimeInterval()
                             )
                     );
+                    schedulerState.notifyAll(); // to tell the runners that new task have been published
                 }
             }
             // consuming shouldn't be part of synchronized

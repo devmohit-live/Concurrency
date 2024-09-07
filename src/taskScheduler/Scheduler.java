@@ -11,7 +11,7 @@ public class Scheduler implements IScheduler {
         MathPayload payload = (MathPayload)task.getPayload();
 
         System.out.printf("Thread %s completed the task with output %d, ", Thread.currentThread().getName() , (payload.getA() + payload.getB()));
-        System.out.printf("Time for task was %d \n", System.currentTimeMillis() + task.getTime());
+        System.out.printf("Time for task was %d \n", System.currentTimeMillis() + task.getFixedTime());
 
     }
 }
