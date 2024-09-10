@@ -3,6 +3,10 @@ package diningPhilosopher;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 
+import java.util.concurrent.TimeUnit;
+
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
+
 @AllArgsConstructor
 public class Philosopher implements Runnable {
 
@@ -10,15 +14,19 @@ public class Philosopher implements Runnable {
     Fork leftFork;
     Fork rightFork;
 
+    @SneakyThrows
     @Override
     public void run() {
         while (true) {
+            think();
             if (leftFork.isAvailable()) {
                 if (leftFork.getLock().tryLock()) {
                     try {
                         leftFork.useFork();
                         if (rightFork.isAvailable()) {
                             if (rightFork.getLock().tryLock()) {
+//                            if (rightFork.getLock().tryLock(100 , MILLISECONDS)) { //or wait for this much interval do not immediately return if
+//                                found a locked resource.
                                 try {
                                     rightFork.useFork();
                                     eat();
@@ -33,8 +41,6 @@ public class Philosopher implements Runnable {
                         leftFork.getLock().unlock();
                     }
                 }
-            } else {
-                think();
             }
         }
     }
