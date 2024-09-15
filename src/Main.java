@@ -1,4 +1,5 @@
 import boundedblockingqueue.BBQRunner;
+import diningPhilosopher.DiningPhilosopherRunner;
 import messageBrokers.SQS.SQSRunner;
 import messageBrokers.kafka.MessageBroker;
 import messageBrokers.kafka.MessageBrokerRunner;
@@ -11,7 +12,7 @@ import taskScheduler.TaskSchedulerRunner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-//       new HelloRunner().run();
+//        new HelloRunner().run();
 //        new EvenOddRunner().run();
 //        new EvenOddZeroRunner().run();
 //        new BBQRunner().run();
@@ -19,6 +20,7 @@ public class Main {
 //        new MessageBrokerRunner().run();
 //        new SingletonRunner().run();
 //        new TaskSchedulerRunner().run();
+//        new DiningPhilosopherRunner().run();
         new StockExchangeRunner().run();
     }
 }
