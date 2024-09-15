@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class StockExchange {
     public static final int DEFAULT_WORKER_COUNT = 1;
@@ -20,7 +21,7 @@ public class StockExchange {
 
     StockExchange() {
         this.users = new ArrayList<>();
-        this.stockWorkers = new HashMap<>();
+        this.stockWorkers = new ConcurrentHashMap<>();
     }
 
     public void registerUser(User user) {
