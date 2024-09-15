@@ -73,10 +73,10 @@ public class StockWorker implements IStockWorker {
     }
 
     public List<Order> getCompletedOrders() {
-        return state.completedOrders;
+        return  new ArrayList<>(state.completedOrders);
     }
 
     public List<Order> getOrderBook() {
-        return state.orderBook;
+        return new ArrayList<>(state.orderBook);
     }
 }
