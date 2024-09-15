@@ -1,4 +1,5 @@
 import boundedblockingqueue.BBQRunner;
+import diningPhilosopher.DiningPhilosopherRunner;
 import messageBrokers.SQS.SQSRunner;
 import messageBrokers.kafka.MessageBroker;
 import messageBrokers.kafka.MessageBrokerRunner;
@@ -17,6 +18,7 @@ public class Main {
 //        new SQSRunner().run();
 //        new MessageBrokerRunner().run();
 //        new SingletonRunner().run();
-        new TaskSchedulerRunner().run();
+//        new TaskSchedulerRunner().run();
+        new DiningPhilosopherRunner().run();
     }
 }
