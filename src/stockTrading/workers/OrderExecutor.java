@@ -20,21 +20,24 @@ public class OrderExecutor implements Runnable {
         while (true) {
             MatchingOrder matchingOrder;
             synchronized (state) {
-                while (state.orderBook.isEmpty()) {
-                    state.wait();
+                    while(true){
+                        while (state.orderBook.isEmpty()) {
+                            state.wait();
+                        }
+                        matchingOrder = getMatchingOrder();
+                        if (matchingOrder == null) {
+                            state.wait();
+                            // goes back to line 20 and again matching orders will be found
+                        } else {
+                            System.out.println("Matching Order Found");
+                            state.orderBook.remove(matchingOrder.getOrder1());
+                            state.orderBook.remove(matchingOrder.getOrder2());
+                            matchingOrder.getOrder1().setThreadName(Thread.currentThread().getName());
+                            matchingOrder.getOrder2().setThreadName(Thread.currentThread().getName());
+                            break;
+                        }
+                    }
                 }
-                matchingOrder = getMatchingOrder();
-                if (matchingOrder == null) {
-                    state.wait();
-                    // goes back to line 20 and again matching orders will be found
-                }else{
-                    System.out.println("Matching Order Found");
-                    state.orderBook.remove(matchingOrder.getOrder1());
-                    state.orderBook.remove(matchingOrder.getOrder2());
-                    matchingOrder.getOrder1().setThreadName(Thread.currentThread().getName());
-                    matchingOrder.getOrder2().setThreadName(Thread.currentThread().getName());
-                }
-            }
 
             if(matchingOrder!=null){
                 executeMatchingOrder(matchingOrder);
