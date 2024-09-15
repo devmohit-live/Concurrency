@@ -9,7 +9,7 @@ public interface IStockWorker {
 
     void modifyOrder(Order order);
 
-    void addWorkerCount(int count);
+    void increaseWorkerCountBy(int count);
 
     int getWorkersCount();
 }
