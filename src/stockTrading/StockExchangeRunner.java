@@ -3,7 +3,7 @@ package stockTrading;
 import lombok.SneakyThrows;
 import stockTrading.models.*;
 
-import java.util.Scanner;
+import java.time.LocalDateTime;
 
 public class StockExchangeRunner {
 
@@ -31,7 +31,16 @@ public class StockExchangeRunner {
         Order order3 = new Order("o3", user1.getUserID(), OrderType.BUY, angleOne.getSymbol(), 2000, 10, OrderStatus.PENDING);
         Order order4 = new Order("o4", user2.getUserID(), OrderType.SELL, angleOne.getSymbol(), 2000, 10, OrderStatus.PENDING);
         Order order7 = new Order("o6", user3.getUserID(), OrderType.BUY, REL.getSymbol(), 500, 10, OrderStatus.PENDING);
-        Order order8 = new Order("o6", user3.getUserID(), OrderType.BUY, REL.getSymbol(), 600, 6, OrderStatus.PENDING);
+        Order order8 = new Order("o8", user3.getUserID(), OrderType.BUY, REL.getSymbol(), 600, 6, OrderStatus.PENDING);
+        Order order9 = new Order("o8", user3.getUserID(), OrderType.SELL, angleOne.getSymbol(), 600, 6, OrderStatus.PENDING);
+        Order order10 = new Order("o9", user2.getUserID(), OrderType.BUY, angleOne.getSymbol(), 2500, 10, OrderStatus.PENDING);
+        Order order11 = new Order("o9", user2.getUserID(), OrderType.SELL, angleOne.getSymbol(), 2500, 10, OrderStatus.PENDING);
+
+        order7.setExpiryTimestamp(LocalDateTime.now().plusSeconds(1));
+        order8.setExpiryTimestamp(LocalDateTime.now().plusSeconds(2));
+        order9.setExpiryTimestamp(LocalDateTime.now().plusSeconds(3));
+        order10.setExpiryTimestamp(LocalDateTime.now().plusSeconds(1));
+        order11.setExpiryTimestamp(LocalDateTime.now().plusSeconds(1));
 
 
         stockExchange.addOrder(order7);
@@ -64,6 +73,9 @@ public class StockExchangeRunner {
         stockExchange.addOrder(order4.clone());
         stockExchange.addOrder(order4.clone());
         stockExchange.addOrder(order4.clone());
+        stockExchange.addOrder(order9);
+        stockExchange.addOrder(order10);
+        stockExchange.addOrder(order11);
 
 
         Thread.sleep(30000);

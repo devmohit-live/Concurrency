@@ -1,15 +1,17 @@
 package stockTrading.models;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
-import java.util.Scanner;
 
 @ToString
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class Order implements Cloneable{
+public class Order implements Cloneable {
     final String orderID;
     final String userID;
     final OrderType type;
@@ -19,6 +21,7 @@ public class Order implements Cloneable{
     LocalDateTime acceptedTimestamp;
     OrderStatus orderStatus;
     String threadName; // For testing
+    LocalDateTime expiryTimestamp;
 
     public Order(String orderID, String userID, OrderType type, String stockSymbol, double price, int quantity, OrderStatus orderStatus) {
         this.orderID = orderID;
@@ -28,6 +31,12 @@ public class Order implements Cloneable{
         this.price = price;
         this.quantity = quantity;
         this.orderStatus = orderStatus;
+    }
+
+
+    public boolean isOrderExpired() {
+        if (getExpiryTimestamp() == null) return false;
+        return LocalDateTime.now().isAfter(getExpiryTimestamp());
     }
 
     @Override

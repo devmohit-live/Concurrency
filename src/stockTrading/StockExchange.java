@@ -34,13 +34,14 @@ public class StockExchange {
         if (existingWorker != null) {
             throw new StockAlreadyPresent();
         }
-        stockWorker.addWorkerCount(DEFAULT_WORKER_COUNT);
+        stockWorker.increaseWorkerCountBy(DEFAULT_WORKER_COUNT);
+        stockWorker.increaseExpiryWorkerCountBy(DEFAULT_WORKER_COUNT);
         System.out.println("Added stock: " + stock);
     }
 
     @SneakyThrows
     public void addOrder(Order order) {
-       StockWorker stockWorker =  validateAndGetStockWorker(order.getStockSymbol());
+        StockWorker stockWorker = validateAndGetStockWorker(order.getStockSymbol());
         Thread.sleep(2000);
         stockWorker.addOrder(order);
     }
@@ -62,7 +63,7 @@ public class StockExchange {
 
     public void increaseWorkersCount(String symbol, int count) {
         StockWorker stockWorker = validateAndGetStockWorker(symbol);
-        stockWorker.addWorkerCount(count);
+        stockWorker.increaseWorkerCountBy(count);
         System.out.println("Increase worker count for Stock " + symbol + " is " + count);
     }
 
