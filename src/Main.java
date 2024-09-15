@@ -4,6 +4,7 @@ import messageBrokers.kafka.MessageBroker;
 import messageBrokers.kafka.MessageBrokerRunner;
 import sequence.numbers.evenoddzerofibo.EvenOddZeroRunner;
 import singleton.SingletonRunner;
+import stockTrading.StockExchangeRunner;
 import taskScheduler.TaskSchedulerRunner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -17,6 +18,7 @@ public class Main {
 //        new SQSRunner().run();
 //        new MessageBrokerRunner().run();
 //        new SingletonRunner().run();
-        new TaskSchedulerRunner().run();
+//        new TaskSchedulerRunner().run();
+        new StockExchangeRunner().run();
     }
 }
