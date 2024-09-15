@@ -2,14 +2,26 @@ package stockTrading;
 
 import lombok.SneakyThrows;
 import stockTrading.models.*;
+import stockTrading.service.OrderService;
+import stockTrading.service.StockService;
+import stockTrading.service.UserService;
+import stockTrading.workers.StockWorker;
 
 import java.time.LocalDateTime;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class StockExchangeRunner {
 
     @SneakyThrows
     public void run() {
-        StockExchange stockExchange = new StockExchange();
+
+        Map<String, StockWorker> map = new ConcurrentHashMap<>(); //db
+        UserService userService = new UserService();
+        OrderService orderService = new OrderService(map);
+        StockService stockService = new StockService(map);
+
+        StockExchange stockExchange = new StockExchange(orderService, stockService,userService);
 
         // User
         User user1 = new User("1", "mohit", "2345", "2345t");
@@ -53,10 +65,10 @@ public class StockExchangeRunner {
 
         stockExchange.addOrder(order1.clone());
         stockExchange.addOrder(order1.clone());
-        stockExchange.getStockWorkersCount(REL.getSymbol());
+        stockService.getStockWorkersCount(REL.getSymbol());
         stockExchange.addOrder(order1.clone());
-        stockExchange.increaseWorkersCount(REL.getSymbol(), 2);
-        stockExchange.getStockWorkersCount(REL.getSymbol());
+        stockService.increaseWorkersCount(REL.getSymbol(), 2);
+        stockService.getStockWorkersCount(REL.getSymbol());
 
         stockExchange.addOrder(order1.clone());
         stockExchange.addOrder(order1.clone());
@@ -68,7 +80,7 @@ public class StockExchangeRunner {
         stockExchange.addOrder(order2.clone());
 
         stockExchange.addOrder(order3.clone());
-        stockExchange.getStockWorkersCount(angleOne.getSymbol());
+        stockService.getStockWorkersCount(angleOne.getSymbol());
         stockExchange.addOrder(order3.clone());
         stockExchange.addOrder(order4.clone());
         stockExchange.addOrder(order4.clone());
@@ -80,12 +92,12 @@ public class StockExchangeRunner {
 
         Thread.sleep(30000);
         System.out.println("--------- Reporting -------------");
-        stockExchange.getCompletedOrder(REL.getSymbol());
-        stockExchange.getPendingAndPartialOrder(REL.getSymbol());
+        orderService.getCompletedOrder(REL.getSymbol());
+        orderService.getPendingAndPartialOrder(REL.getSymbol());
 
         System.out.println();
-        stockExchange.getCompletedOrder(angleOne.getSymbol());
-        stockExchange.getPendingAndPartialOrder(angleOne.getSymbol());
+        orderService.getCompletedOrder(angleOne.getSymbol());
+        orderService.getPendingAndPartialOrder(angleOne.getSymbol());
 
     }
 }
