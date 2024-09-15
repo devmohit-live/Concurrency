@@ -1,4 +1,4 @@
-# Difference between the logic of going to sync block again from outer loop vs having a inner while loop for matching order 
+## Difference between the logic of going to sync block again from outer loop vs having a inner while loop for matching order 
 
 
 
@@ -69,3 +69,25 @@ Both implementations are logically correct; however, the choice between them dep
 - **Performance**: Code2 might be more performant due to reduced lock contention but less responsive to other threads due to longer lock holding.
 
 It's crucial to profile both approaches in your specific application context to make a data-driven decision on which performs better given your workload characteristics.
+
+
+
+
+## ConcurrentMap vs sync(this) for stock exchange functions:
+
+ConcurrentMaps will provide the atomic operations but if you write code something like this : 
+
+```java
+  public void addStock(Stock stock) {
+        if (stockWorkers.containsKey(stock.getSymbol())) {
+            throw new StockAlreadyPresent();
+        }
+        StockWorker stockWorker = new StockWorker(stock);
+        stockWorkers.put(stock.getSymbol(), stockWorker);
+        stockWorker.addWorkerCount(DEFAULT_WORKER_COUNT);
+        System.out.println("Added stock: " + stock);
+    }
+```
+
+It may cause problem as containsKey/get , put are written in separate line, ie we are'nt using the putIfAbsent, computeIfAbsent, etc.
+So different lines have read-write problems, to avoid that use single statement operations or use synchronized blocks

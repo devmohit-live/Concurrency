@@ -9,15 +9,14 @@ import stockTrading.models.User;
 import stockTrading.workers.StockWorker;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class StockExchange {
     public static final int DEFAULT_WORKER_COUNT = 1;
-    List<User> users;
-    Map<String, StockWorker> stockWorkers;
+    final List<User> users;
+    final Map<String, StockWorker> stockWorkers;
 
     StockExchange() {
         this.users = new ArrayList<>();
@@ -30,69 +29,66 @@ public class StockExchange {
     }
 
     public void addStock(Stock stock) {
-        if (stockWorkers.containsKey(stock.getSymbol())) {
+        StockWorker stockWorker = new StockWorker(stock);
+        StockWorker existingWorker = stockWorkers.putIfAbsent(stock.getSymbol(), stockWorker);
+        if (existingWorker != null) {
             throw new StockAlreadyPresent();
         }
-        StockWorker stockWorker = new StockWorker(stock);
-        stockWorkers.put(stock.getSymbol(), stockWorker);
         stockWorker.addWorkerCount(DEFAULT_WORKER_COUNT);
         System.out.println("Added stock: " + stock);
     }
 
     @SneakyThrows
     public void addOrder(Order order) {
-        validateStock(order.getStockSymbol());
+       StockWorker stockWorker =  validateAndGetStockWorker(order.getStockSymbol());
         Thread.sleep(2000);
-        stockWorkers.get(order.getStockSymbol()).addOrder(order);
+        stockWorker.addOrder(order);
     }
 
     public void cancelOrder(Order order) {
-        validateStock(order.getStockSymbol());
-        stockWorkers.get(order.getStockSymbol()).cancelOrder(order);
+        StockWorker stockWorker = validateAndGetStockWorker(order.getStockSymbol());
+        stockWorker.cancelOrder(order);
     }
 
     public void modifyOrder(Order order) {
-        validateStock(order.getStockSymbol());
-        stockWorkers.get(order.getStockSymbol()).modifyOrder(order);
+        StockWorker stockWorker = validateAndGetStockWorker(order.getStockSymbol());
+        stockWorker.modifyOrder(order);
     }
 
     public void getStockWorkersCount(String symbol) {
-        validateStock(symbol);
-        System.out.printf("Stock workers count for Stock %s is %s: \n", symbol, stockWorkers.get(symbol).getWorkersCount());
+        StockWorker stockWorker = validateAndGetStockWorker(symbol);
+        System.out.printf("Stock workers count for Stock %s is %s: \n", symbol, stockWorker.getWorkersCount());
     }
 
     public void increaseWorkersCount(String symbol, int count) {
-        validateStock(symbol);
-        stockWorkers.get(symbol).addWorkerCount(count);
+        StockWorker stockWorker = validateAndGetStockWorker(symbol);
+        stockWorker.addWorkerCount(count);
         System.out.println("Increase worker count for Stock " + symbol + " is " + count);
     }
 
-    private void validateStock(String symbol) throws StockNotFound{
-        if (!stockWorkers.containsKey(symbol)) {
+    private StockWorker validateAndGetStockWorker(String symbol) throws StockNotFound {
+        StockWorker stockWorker = stockWorkers.get(symbol);
+        if (stockWorker == null) {
             throw new StockNotFound();
         }
+        return stockWorker;
     }
-
 
     public void getCompletedOrder(String symbol) {
-        validateStock(symbol);
-        System.out.println("Completed order for Stock " + symbol+" are: ");
-        StockWorker stockWorker = stockWorkers.get(symbol);
-        for(Order order: stockWorker.getCompletedOrders()){
+        StockWorker stockWorker = validateAndGetStockWorker(symbol);
+        System.out.println("Completed order for Stock " + symbol + " are: ");
+        for (Order order : stockWorker.getCompletedOrders()) {
             System.out.println(order);
         }
         System.out.println(" ---- Finished --------");
     }
-
 
     public void getPendingAndPartialOrder(String symbol) {
-        validateStock(symbol);
-        System.out.println("Pending order for Stock " + symbol+" are: ");
-        StockWorker stockWorker = stockWorkers.get(symbol);
-        for(Order order: stockWorker.getOrderBook()){
+        StockWorker stockWorker = validateAndGetStockWorker(symbol);
+        System.out.println("Pending order for Stock " + symbol + " are: ");
+        for (Order order : stockWorker.getOrderBook()) {
             System.out.println(order);
         }
         System.out.println(" ---- Finished --------");
     }
-
 }
