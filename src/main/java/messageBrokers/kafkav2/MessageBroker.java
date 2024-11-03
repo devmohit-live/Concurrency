@@ -1,0 +1,47 @@
+package messageBrokers.kafkav2;
+
+
+import messageBrokers.kafkav2.consumers.IConsumerGroup;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MessageBroker {
+    private List<Topic> topics;
+    // create / update topic
+    public MessageBroker(){
+        this.topics = new ArrayList<Topic>();
+    }
+
+    public void addTopic(Topic topic){
+        this.topics.add(topic);
+    }
+
+    public Topic getTopicByID(String topicID){
+        Topic filteredTopic = topics.stream().filter(topic->topic.getTopicID().equals(topicID)).findFirst().orElse(null);
+        if(filteredTopic==null){
+            throw new IllegalArgumentException("Topic not found");
+        }
+        return filteredTopic;
+    }
+
+    public void registerConsumerGroup(String topicID , IConsumerGroup consumerGroup){
+        Topic topic = getTopicByID(topicID);
+        topic.registerConsumerGroup(consumerGroup);
+    }
+
+    public void pushlishMessage(String topicID , Message message){
+        Topic topic = getTopicByID(topicID);
+        topic.publish(message);
+    }
+
+    public void resetOffsetOfAConsumerGroup(String topicID, String subscriberID, int index){
+        Topic topic = getTopicByID(topicID);
+        IConsumerGroup group = topic.getSubscribers().stream().filter(consumerGroup->consumerGroup.getConsumerGroupID().equals(subscriberID)).findFirst().orElse(null);
+        if (group==null){
+            throw new RuntimeException("Consumer group does not exists");
+        }
+        group.resetOffset(index);
+    }
+
+}
