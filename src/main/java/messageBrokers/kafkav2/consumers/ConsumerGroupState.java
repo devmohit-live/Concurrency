@@ -1,33 +1,29 @@
-package messageBrokers.kafka.consumers;
+package messageBrokers.kafkav2.consumers;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import messageBrokers.kafka.message.Message;
+import lombok.Setter;
+import messageBrokers.kafkav2.Message;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Getter
+@Setter
 public class ConsumerGroupState {
-    String groupID;
-    List<Message> messageQ;
     Integer offset;
-
-
-    public ConsumerGroupState(String groupID, List<Message> messageQ) {
-        this.groupID = groupID;
-        this.messageQ = messageQ;
-        this.offset = 0;
-    }
+    List<Message> q;
 
     public void resetIndex(int index){
         if(isValidIndex(index)){
             throw new IndexOutOfBoundsException("Index out of bounds: "+index);
         }
         this.offset = index;
-        System.out.printf("------ Resetting index for the consumerGroup %s to %d ------- \n", groupID, index);
+        System.out.printf("------ Resetting index for the consumerGroup to %d ------- \n", index);
     }
 
     private boolean isValidIndex(int index) {
-        return index < 0 || index > offset || index >= messageQ.size();
+        return index < 0 || index > offset || index >= q.size();
     }
 
     public void restartIndex(){

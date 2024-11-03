@@ -4,7 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1625673-4c73-4aaa-80ad-83fc1087ab8f" name="Changes" comment="Changed the builder form iml to maven" />
+    <list default="true" id="e1625673-4c73-4aaa-80ad-83fc1087ab8f" name="Changes" comment="Message Broker - KAFKA with offset">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/messageBrokers/kafkav2/Message.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/messageBrokers/kafkav2/MessageBroker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/messageBrokers/kafkav2/MessageBrokerRunner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/messageBrokers/kafkav2/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/messageBrokers/kafkav2/Topic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/messageBrokers/kafkav2/consumers/AddConsumers/AddConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/messageBrokers/kafkav2/consumers/AddConsumers/AddConsumerGroup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/messageBrokers/kafkav2/consumers/ConsumerGroupState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/messageBrokers/kafkav2/consumers/ConsumerWorker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/messageBrokers/kafkav2/consumers/IConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/messageBrokers/kafkav2/consumers/IConsumerGroup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/messageBrokers/kafkav2/consumers/MultiplicationConsumers/MultiplicationConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/messageBrokers/kafkav2/consumers/MultiplicationConsumers/MultiplicationConsumerGroup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/messageBrokers/kafkav2/consumers/SubstractionConsumers/SubstractionConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/messageBrokers/kafkav2/consumers/SubstractionConsumers/SubstractionConsumerGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/messageBrokers/kafka/consumers/ConsumerGroupState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messageBrokers/kafka/consumers/ConsumerGroupState.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,52 +39,69 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package-info" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2nCeVeQ7MN2Om15xNxQGW7ymeEa" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;true&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/mohitsingh/Documents/Personal/Concurrency&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.annotationProcessors&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "true",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "kafkav2",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/devmohit/IdeaProjects/Concurrency/src/main/java/messageBrokers/kafkav2/consumers",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/messageBrokers/kafkav2/consumers" />
+      <recent name="$PROJECT_DIR$/src/main/java/messageBrokers/kafkav2" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="messageBrokers.kafkav2.consumers.SubstractionConsumers" />
+      <recent name="messageBrokers.kafkav2.consumers" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="messageBrokers.kafkav2" />
     </key>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="com.mohit.Concurrency" />
+      <module name="Concurrency" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -107,5 +149,54 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Changed the builder form iml to maven" />
     <option name="LAST_COMMIT_MESSAGE" value="Changed the builder form iml to maven" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/messageBrokers/kafkav2/consumers/AddConsumers/AddConsumer.java</url>
+          <line>9</line>
+          <properties class="messageBrokers.kafkav2.consumers.AddConsumers.AddConsumer" method="consume">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/messageBrokers/kafkav2/consumers/SubstractionConsumers/SubstractionConsumerGroup.java</url>
+          <line>38</line>
+          <properties class="messageBrokers.kafkav2.consumers.SubstractionConsumers.SubstractionConsumerGroup" method="registerConsumer">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/messageBrokers/kafkav2/MessageBroker.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/messageBrokers/kafkav2/MessageBroker.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/messageBrokers/kafkav2/Topic.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/messageBrokers/kafkav2/consumers/AddConsumers/AddConsumerGroup.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/messageBrokers/kafkav2/consumers/AddConsumers/AddConsumerGroup.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

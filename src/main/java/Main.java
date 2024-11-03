@@ -1,3 +1,5 @@
+//import messageBrokers.kafkav2.MessageBrokerRunner;
+import messageBrokers.kafkav2.MessageBrokerRunner;
 import stockTrading.StockExchangeRunner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -13,6 +15,7 @@ public class Main {
 //        new SingletonRunner().run();
 //        new TaskSchedulerRunner().run();
 //        new DiningPhilosopherRunner().run();
-        new StockExchangeRunner().run();
+//        new StockExchangeRunner().run();
+        new MessageBrokerRunner().run();
     }
 }
